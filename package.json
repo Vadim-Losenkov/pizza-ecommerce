@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.3.1",
     "browser-sync": "^2.26.3",
+    "classnames": "^2.3.1",
     "fullpage.js": "^3.0.4",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
