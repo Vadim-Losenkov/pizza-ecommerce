@@ -1,5 +1,4 @@
-import {Header, Categories} from './components'
-import SortPopup from './components/SortPopup';
+import {Header, Categories, SortPopup} from './components'
 
 function App() {
   return (
