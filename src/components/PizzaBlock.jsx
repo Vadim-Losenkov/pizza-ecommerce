@@ -1,6 +1,13 @@
 import React from 'react'
+import classNames from 'classnames'
 
-function pizzaBlock({name, imageUrl}) {
+function PizzaBlock({ name, imageUrl, price, types }) {
+  const availableTypes = ['тонкое', 'традиционное']
+  const availableSizes = [20, 30, 40]
+  const [activeType, setActiveType] = React.useState(types[0])
+
+  const onSelectType = index => setActiveType(index)
+
   return (
     <div className="pizza-block">
       <img
@@ -11,17 +18,40 @@ function pizzaBlock({name, imageUrl}) {
       <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {
+            availableTypes.map((type, index) => (
+              <li
+                onClick={() => onSelectType(index)}
+                className={classNames({
+                  active: activeType === index,
+                  disabled: !types.includes(index),
+                })}
+                key={`${type}_${index}`}
+              >
+                {type}
+              </li>
+            ))
+          }
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {
+            availableSizes.map((type, index) => (
+              <li
+                onClick={() => onSelectType(index)}
+                className={classNames({
+                  active: activeType === index,
+                  disabled: !types.includes(index),
+                })}
+                key={`${type}_${index}`}
+              >
+                {type}
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от 395 ₽</div>
+        <div className="pizza-block__price">от {price} ₽</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
@@ -43,4 +73,4 @@ function pizzaBlock({name, imageUrl}) {
   )
 }
 
-export default pizzaBlock
+export default PizzaBlock
