@@ -1,12 +1,12 @@
 import React from 'react'
 
-function SortPopup({items}) {
+const SortPopup = React.memo(function SortPopup({items}) {
   const [visiblePopup, setVisiblePopup] = React.useState(false)
   const [activeSort, setActiveSort] = React.useState(0)
 
   const sortRef = React.useRef()
 
-  const activeLable = items[activeSort]
+  const activeLable = items[activeSort].name
 
   const toggleActiveSort = (index) => {
     setActiveSort(index)
@@ -51,17 +51,17 @@ function SortPopup({items}) {
           {items && 
           items.map((item, index) => (
             <li 
-              key={`${item}_${index}`} 
+              key={`${item.type}_${index}`} 
               onClick={() => toggleActiveSort(index)} 
               className={index === activeSort ? 'active' : ''}
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>
       </div>}
     </div>
   )
-}
+})
 
 export default SortPopup
